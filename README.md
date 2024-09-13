@@ -2,7 +2,7 @@ Origin - main
 
 Steps:
 1. Clone the repository:
-  - git clone https://github.com/nishi-v/clothes.git
+  - git clone https://github.com/nishi-v/clothes_virtual_tryon.git
 
 2. Go to directory IDM-VTON
    Add ckpt folder in it from the zip file present in the root folder
