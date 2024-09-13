@@ -673,7 +673,8 @@ dress3.jpg
 model2.jpg
 IDM-VTON/yisol/
 IDM-VTON/ckpt/
-IDM-VTON/DressCode/
+IDM-VTON/DressCode/lower_body
+IDM-VTON/DressCode/upper_body
 
 .bashrc
 .condarc
