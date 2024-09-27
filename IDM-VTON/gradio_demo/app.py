@@ -123,54 +123,6 @@ pipe = TryonPipeline.from_pretrained(
 )
 pipe.unet_encoder = UNet_Encoder
 
-def plot_images(info_dict, output_path='output'):
-    # Create output directory if it doesn't exist
-    os.makedirs(output_path, exist_ok=True)
-    
-    def tensor_to_pil(tensor, is_pose=False):
-        if tensor.is_cuda:
-            tensor = tensor.cpu()
-        if tensor.dim() == 4:
-            tensor = tensor.squeeze(0)
-        if tensor.dtype == torch.float16:
-            tensor = tensor.to(torch.float32)  # Convert to float32 for operations
-        if is_pose:
-            tensor = (tensor + 1) / 2
-        tensor = tensor.clamp(0, 1)
-        tensor = (tensor * 255).byte()
-        return Image.fromarray(tensor.permute(1, 2, 0).numpy())
-
-    # Save pose image
-    pose_img = tensor_to_pil(info_dict['pose_img'], is_pose=True)
-    pose_img.save(os.path.join(output_path, 'pose_image.png'))
-
-    # Save garment image
-    cloth_img = tensor_to_pil(info_dict['cloth'])
-    cloth_img.save(os.path.join(output_path, 'garment_image.png'))
-
-    # Save mask image
-    if isinstance(info_dict['mask_image'], Image.Image):
-        mask_img = info_dict['mask_image']
-    else:
-        mask_img = Image.fromarray((info_dict['mask_image'].squeeze().cpu().numpy() * 255).astype(np.uint8))
-    mask_img.save(os.path.join(output_path, 'mask_image.png'))
-
-    # Save human image
-    if isinstance(info_dict['image'], Image.Image):
-        human_img = info_dict['image']
-    else:
-        human_img = Image.fromarray((info_dict['image'].squeeze().cpu().numpy() * 255).astype(np.uint8))
-    human_img.save(os.path.join(output_path, 'human_image.png'))
-
-    # Save IP adapter image
-    if isinstance(info_dict['ip_adapter_image'], Image.Image):
-        ip_adapter_img = info_dict['ip_adapter_image']
-    else:
-        ip_adapter_img = Image.fromarray((info_dict['ip_adapter_image'].squeeze().cpu().numpy() * 255).astype(np.uint8))
-    ip_adapter_img.save(os.path.join(output_path, 'ip_adapter_image.png'))
-
-    print(f"All images have been saved in the '{output_path}' directory.")
-
 def start_tryon(dict,garm_img,garment_des,is_checked,is_checked_crop,denoise_steps,seed):
     
     openpose_model.preprocessor.body_estimation.model.to(device)
@@ -280,25 +232,6 @@ def start_tryon(dict,garm_img,garment_des,is_checked,is_checked_crop,denoise_ste
                         ip_adapter_image = garm_img.resize((768,1024)),
                         guidance_scale=2.0,
                     )[0]
-        info_dict = {
-            'pose_img': pose_img,
-            'cloth': garm_tensor,
-            'mask_image': mask,
-            'image': human_img,
-            'ip_adapter_image': garm_img.resize((768, 1024)) 
-        }
-
-        print('Pose img:', info_dict['pose_img'])
-        print('\n')
-        print('cloth:', info_dict['cloth'])
-        print('\n')
-        print('Mask img:', info_dict['mask_image'])
-        print('\n')
-        print('Image:', info_dict['image'])
-        print('\n')
-        print('ip adapetr image:', info_dict['ip_adapter_image'])
-
-        plot_images(info_dict)
 
     if is_checked_crop:
         out_img = images[0].resize(crop_size)        
@@ -374,4 +307,6 @@ with image_blocks as demo:
     try_button.click(fn=start_tryon, inputs=[imgs, garm_img, prompt, is_checked,is_checked_crop, denoise_steps, seed], outputs=[image_out,masked_img], api_name='tryon')
 
             
+
+
 image_blocks.launch(share=True)
