@@ -7,7 +7,7 @@ Steps:
 
 2. Go to directory IDM-VTON
 
-   Add ckpt folder in it from the zip file in [link for ckpt](https://fspl-my.sharepoint.com/:u:/g/personal/nishitav_futuresoftindia_com/EYGlecawIdVJvVxxbALDMgEBOtcGfJX-yIddPQ7UEKA12g?e=wU7fYo)
+   Run the download_models.sh file which is present in root folder.
 
    path of ckpt - IDM-VTON/ckpt
 
