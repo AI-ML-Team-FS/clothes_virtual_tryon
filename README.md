@@ -8,16 +8,22 @@ Steps:
 2. Go to directory IDM-VTON
 
    Run the download_models.sh file which is present in root folder.
+   - cd IDM-VTON
 
-   path of ckpt - IDM-VTON/ckpt
+   run download_model.sh
+   - bash download_model.sh
 
-3. Create a folder named yisol in IDM-VTON
-
-   Go to yisol folder
+4. Create a folder named yisol in IDM-VTON
+   - mkdir yisol
+   - cd yisol
 
    Clone the below mentioned repository there:
-   
+   - apt-get install lfs
+   - git lfs install
    - git clone https://huggingface.co/yisol/IDM-VTON
   
-4. Finally run gradient.ipynb file
+5. Finally run gradient.ipynb file
+   (come back to IDM-VTON folder)
+   - cd ..
+   - python3 gradio_demo/app.py
 
