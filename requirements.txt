@@ -10,7 +10,7 @@ transformers==4.36.2
 diffusers==0.25.1
 einops==0.7.0
 bitsandbytes==0.39.0
-scipy==1.11.1
+scipy==1.11.0
 fvcore
 cloudpickle
 omegaconf
