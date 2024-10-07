@@ -309,4 +309,4 @@ with image_blocks as demo:
             
 
 
-image_blocks.launch(share=True)
+image_blocks.launch()
