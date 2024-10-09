@@ -695,3 +695,7 @@ IDM-VTON/ckpt/
 .zcompdump
 .zsh_history
 .zshrc
+.gitattributes
+gradio.ipynb
+idm_vton.ipynb
+

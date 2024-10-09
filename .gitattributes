@@ -1,5 +1,0 @@
-IDM-VTON/yisol/IDM-VTON/unet/diffusion_pytorch_model.bin filter=lfs diff=lfs merge=lfs -text
-IDM-VTON/yisol/IDM-VTON/unet_encoder/diffusion_pytorch_model.safetensors filter=lfs diff=lfs merge=lfs -text
-*.pkl filter=lfs diff=lfs merge=lfs -text
-*.onnx filter=lfs diff=lfs merge=lfs -text
-*.pth filter=lfs diff=lfs merge=lfs -text
