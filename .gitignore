@@ -672,7 +672,9 @@ new.ipynb
 dress3.jpg
 model2.jpg
 IDM-VTON/yisol/
-IDM-VTON/ckpt/
+IDM-VTON/ckpt/openpose/
+IDM-VTON/ckpt/densepose/
+IDM-VTON/ckpt/humanparsing/
 
 .bashrc
 .condarc
