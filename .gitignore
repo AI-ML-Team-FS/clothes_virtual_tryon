@@ -675,6 +675,7 @@ IDM-VTON/yisol/
 IDM-VTON/ckpt/openpose/
 IDM-VTON/ckpt/densepose/
 IDM-VTON/ckpt/humanparsing/
+generate_garment_mask/sample/
 
 .bashrc
 .condarc
